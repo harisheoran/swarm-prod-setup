@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  server:
+    image:
+    ports:
+      - "8080:8080"
+    volumes:
+      - $HOME/.docker/config.json:/root/.docker/config.json
+      - $HOME/env/.env:/app/.env
+    deploy:
+      update_config:
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
