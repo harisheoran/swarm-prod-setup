@@ -20,6 +20,18 @@ services:
      - '3000:3000'
     volumes:
       - grafana-storage:/var/lib/grafana
+
+  loki:
+    container_name: loki
+    image: grafana/loki:3.0.0
+    ports:
+      - "3100:3100"
+    command:
+      - "--config.file=/etc/loki/local-config.yaml"
+    volumes:
+      - $HOME/swarm-prod-setup/loki:/etc/loki
+    restart: unless-stopped
+
   
 volumes:
   prom_data:

@@ -21,4 +21,4 @@ scrape_configs:
         - localhost:9090
   - job_name: server # Change to whatever you like
     static_configs:
-      - targets: ['127.0.0.1:9100'] #Change this to your server's IP
+        - targets: ['20.244.24.48:9100'] #Change this to your server's IP

@@ -2,7 +2,11 @@ version: "3.8"
 
 services:
   server:
-    image:
+    image: codebreakers01/hackdost:main
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://20.244.24.48:3100/loki/api/v1/push"
     ports:
       - "8080:8080"
     volumes:
